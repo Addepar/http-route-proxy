@@ -103,10 +103,6 @@ var server = {
                 if (proxyStatus.status !== _this.status.FORWARD) {
                     next();
                 }
-                // forward request
-                else {
-                    console.log(proxyStatus.message);
-                }
             });
         }
     },
