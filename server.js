@@ -96,6 +96,13 @@ var server = {
             },
             _this = this;
 
+        proxy.on('proxyError', function (err, req, res) {
+            res.writeHead(502, {
+                'Content-Type': 'text/plain'
+            });
+            res.end('Something went wrong. Error message:\n' + err); 
+        });
+
         return function (req, res, next) {
 
             _this.proxyMiddleware(req, res, proxy, connectConfig, function (proxyStatus) {
